@@ -23,8 +23,9 @@ public class BaseDriverParameter {
     public WebDriver driver;
     public static WebDriverWait wait;
 
-    @BeforeClass
+
     @Parameters("browserType")
+    @BeforeClass
     public void startingOperations(String browser) {
 
         Logger logger = Logger.getLogger("");

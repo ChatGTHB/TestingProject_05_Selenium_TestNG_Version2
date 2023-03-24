@@ -1,10 +1,12 @@
 package project_05_Selenium_TestNG;
 
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import utility.BaseDriver2;
 import utility.BaseDriverParameter;
 
-public class Tests extends BaseDriverParameter {
+public class Tests extends BaseDriver2 {
 
 // 1. POM kullanınız.
 // 2. Paralel testler koşturunuz (Chrome,Firefox).
@@ -20,25 +22,17 @@ public class Tests extends BaseDriverParameter {
 //➢ Login olduğunuzu doğrulayınız.
 
 
-    TestsElements te =new TestsElements();
-    @Test
-    void loginTest(){
+    //  TestsElements te =new TestsElements();
+
+    @Test()
+    void loginTest() {
 
         driver.get("https://admin-demo.nopcommerce.com/login?");
 
-        te.eMail.clear();
-        te.eMail.sendKeys("admin@yourstore.com");
-        te.password.clear();
-        te.password.sendKeys("admin");
+        TestsElements te = new TestsElements();
+
         te.loginButton.click();
 
-
-
     }
-
-
-
-
-
 
 }
