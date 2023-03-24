@@ -1,15 +1,14 @@
 package project_05_Selenium_TestNG;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import utility.BaseDriver;
-import utility.BaseDriver2;
-import utility.BaseDriverParameter;
+
 
 public class TestsElements {
-    public TestsElements() {
-        PageFactory.initElements(BaseDriver2.driver, this);
+    public TestsElements(WebDriver driver) {
+        PageFactory.initElements(driver, this);
     }
 
     @FindBy(xpath="//input[@id='Email']")
@@ -20,6 +19,9 @@ public class TestsElements {
 
     @FindBy(xpath="//button[text()='Log in']")
     public WebElement loginButton;
+
+    @FindBy(xpath="//a[text()='Logout']")
+    public WebElement logoutLink;
 
 
 

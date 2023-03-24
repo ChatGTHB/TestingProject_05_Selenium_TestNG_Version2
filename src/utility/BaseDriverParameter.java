@@ -19,13 +19,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class BaseDriverParameter {
-
     public WebDriver driver;
     public static WebDriverWait wait;
 
-
-    @Parameters("browserType")
     @BeforeClass
+    @Parameters("browserType")
     public void startingOperations(String browser) {
 
         Logger logger = Logger.getLogger("");
@@ -58,24 +56,25 @@ public class BaseDriverParameter {
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
-        //loginTest();
+        loginTest();
 
     }
 
     void loginTest() {
+        driver.get("https://admin-demo.nopcommerce.com/login?");
 
-        driver.get("https://opencart.abstracta.us/index.php?route=account/login");
-
-        WebElement loginMail = driver.findElement(By.id("input-email"));
-        loginMail.sendKeys("test123@testing.com");
-
-        WebElement loginPassword = driver.findElement(By.id("input-password"));
-        loginPassword.sendKeys("Password");
-
-        WebElement loginButton = driver.findElement(By.xpath("//input[@class='btn btn-primary']"));
-        loginButton.click();
-
-        Assert.assertEquals(driver.getTitle(), "My Account");
+//        driver.get("https://opencart.abstracta.us/index.php?route=account/login");
+//
+//        WebElement loginMail = driver.findElement(By.id("input-email"));
+//        loginMail.sendKeys("test123@testing.com");
+//
+//        WebElement loginPassword = driver.findElement(By.id("input-password"));
+//        loginPassword.sendKeys("Password");
+//
+//        WebElement loginButton = driver.findElement(By.xpath("//input[@class='btn btn-primary']"));
+//        loginButton.click();
+//
+//        Assert.assertEquals(driver.getTitle(), "My Account");
 
     }
 
