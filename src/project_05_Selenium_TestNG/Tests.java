@@ -1,14 +1,11 @@
 package project_05_Selenium_TestNG;
 
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import utility.BaseDriverParameter;
 
-
 public class Tests extends BaseDriverParameter {
-
-//➢ Login olduğunuzu doğrulayınız.
-
     @Test()
     void loginTest() {
 
@@ -20,5 +17,23 @@ public class Tests extends BaseDriverParameter {
         te.loginButton.click();
 
         Assert.assertTrue(te.logoutLink.isDisplayed());
+    }
+
+    //              Test Case 2: Check LeftNaw Menu
+//            ➢ Dashboardun altındaki menülere tek tek tıklatın.
+//            ➢ Menülerin açılıp açılmadığını doğrulayın.
+//            ➢ Açılan menünün altındaki elemanların olduğunu doğrulayın.
+    @Test(dependsOnMethods = {"loginTest"})
+    void checkLeftNavMenu() {
+
+        TestsElements te = new TestsElements(driver);
+
+        for (int i = 1; i < te.navMenu.size(); i++) {
+            wait.until(ExpectedConditions.elementToBeClickable(te.navMenu.get(i)));
+            te.navMenu.get(i).click();
+            wait.until(ExpectedConditions.visibilityOf(te.navAltMenu.get(0)));
+            Assert.assertTrue(te.navAltMenu.get(0).isDisplayed());
+        }
+
     }
 }

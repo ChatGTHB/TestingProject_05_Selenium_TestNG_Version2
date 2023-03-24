@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 
 public class TestsElements {
     public TestsElements(WebDriver driver) {
@@ -22,6 +24,12 @@ public class TestsElements {
 
     @FindBy(xpath="//a[text()='Logout']")
     public WebElement logoutLink;
+
+    @FindBy(xpath="//ul[@class='nav nav-pills nav-sidebar flex-column nav-legacy']/li")
+    public List <WebElement>navMenu;
+
+    @FindBy(xpath="//ul[@class='nav nav-treeview']")
+    public List <WebElement>navAltMenu;
 
 
 
