@@ -1,0 +1,53 @@
+Testing Project 5
+
+1. POM kullanınız.
+2. Paralel testler koşturunuz (Chrome,Firefox).
+3. Test Case’lerinizi xml file dan çalistiriniz.
+4. Url: https://admin-demo.nopcommerce.com/login?
+5. username: admin@yourstore.com, password: admin
+
+
+Test Case 1: Login Test
+➢ https://admin-demo.nopcommerce.com/login? sitesine gidiniz.
+➢ Geçerli Username,password giriniz.
+➢ Login butonuna tıklayınız.
+➢ Login olduğunuzu doğrulayınız.
+
+
+Test Case 2: Check LeftNaw Menu
+➢ Dashboardun altındaki menülere tek tek tıklatın.
+➢ Menülerin açılıp açılmadığını doğrulayın.
+➢ Açılan menünün altındaki elemanların olduğunu doğrulayın.
+
+
+Test Case 3: Create Customer
+➢ Customers menusunun altındaki Customers’a tıklatınız.
+➢ Açılan sayfada Add new Butonuna tıklatınız.
+➢ Açılan formu doldurunuz ve save butonuna tıklatınız.
+➢ Başarılı bir şekilde Customer oluşturduğunuzu doğrulayınız.
+
+
+Test Case 4: Edit Customer
+➢ Customers’a tıklatınız.
+➢ Acilan sayfada search kısmına yukarıda oluşturduğunuz Customer’in email,firstname
+ve lastName’leri giriniz.
+➢ Search butonuna tıklatınız.
+➢ Oluşturmuş olduğunuz kaydın geldiğini doğrulayınız.
+➢ Edit butonuna tıklatınız.
+➢ Herhangi bir bilgiyi değiştirip save butonuna tıklatınız.
+➢ Başarılı bir şekilde update olduğunu doğrulayınız.
+
+
+Test Case 5: Delete Customer
+➢ Customers’a tıklatınız.
+➢ Acilan sayfada search kismina yukarida olusturdugunuz Customer’in email,firstname
+ve lastName leri giriniz.
+➢ Search butonuna tıklatınız.
+➢ Delete butonuna tıklatınız.
+➢ Başarılı bir şekilde Customer sildiğinizi doğrulayanız.
+
+
+Test Case 6: Search Test
+➢ Search kısmına “Shipments” textini gönderiniz.
+➢ Arama sonucuna tıklayınız.
+➢ Shipments’e gittiğini doğrulayınız

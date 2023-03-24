@@ -57,7 +57,7 @@ public class BaseDriverParameter {
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
-        loginTest();
+        //loginTest();
 
     }
 
