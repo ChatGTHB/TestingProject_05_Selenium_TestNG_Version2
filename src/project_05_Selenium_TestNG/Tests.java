@@ -19,10 +19,20 @@ public class Tests extends BaseDriverParameter {
 //➢ Login butonuna tıklayınız.
 //➢ Login olduğunuzu doğrulayınız.
 
+
+    TestsElements te =new TestsElements();
     @Test
     void loginTest(){
 
         driver.get("https://admin-demo.nopcommerce.com/login?");
+
+        te.eMail.clear();
+        te.eMail.sendKeys("admin@yourstore.com");
+        te.password.clear();
+        te.password.sendKeys("admin");
+        te.loginButton.click();
+
+
 
     }
 
