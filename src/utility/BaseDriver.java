@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import project_05_Selenium_TestNG.TestsElements;
 
 import java.time.Duration;
 import java.util.logging.Level;
@@ -50,16 +51,14 @@ public class BaseDriver {
 
         driver.get("https://admin-demo.nopcommerce.com/login?");
 
-//        WebElement loginMail = driver.findElement(By.id("input-email"));
-//        loginMail.sendKeys("test123@testing.com");
-//
-//        WebElement loginPassword = driver.findElement(By.id("input-password"));
-//        loginPassword.sendKeys("Password");
-//
-//        WebElement loginButton = driver.findElement(By.xpath("//input[@class='btn btn-primary']"));
-//        loginButton.click();
-//
-//        Assert.assertEquals(driver.getTitle(), "My Account");
+        TestsElements te = new TestsElements(driver);
+
+        te.eMail.clear();
+        te.eMail.sendKeys("admin@yourstore.com");
+        te.password.clear();
+        te.password.sendKeys("admin");
+        te.loginButton.click();
+        Assert.assertTrue(te.logoutLink.isDisplayed());
     }
 
     @AfterClass

@@ -1,8 +1,7 @@
 package utility;
 
-import org.openqa.selenium.By;
+
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -13,6 +12,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
+import project_05_Selenium_TestNG.TestsElements;
 
 import java.time.Duration;
 import java.util.logging.Level;
@@ -63,18 +63,14 @@ public class BaseDriverParameter {
     void loginTest() {
         driver.get("https://admin-demo.nopcommerce.com/login?");
 
-//        driver.get("https://opencart.abstracta.us/index.php?route=account/login");
-//
-//        WebElement loginMail = driver.findElement(By.id("input-email"));
-//        loginMail.sendKeys("test123@testing.com");
-//
-//        WebElement loginPassword = driver.findElement(By.id("input-password"));
-//        loginPassword.sendKeys("Password");
-//
-//        WebElement loginButton = driver.findElement(By.xpath("//input[@class='btn btn-primary']"));
-//        loginButton.click();
-//
-//        Assert.assertEquals(driver.getTitle(), "My Account");
+        TestsElements te = new TestsElements(driver);
+
+        te.eMail.clear();
+        te.eMail.sendKeys("admin@yourstore.com");
+        te.password.clear();
+        te.password.sendKeys("admin");
+        te.loginButton.click();
+        Assert.assertTrue(te.logoutLink.isDisplayed());
 
     }
 
