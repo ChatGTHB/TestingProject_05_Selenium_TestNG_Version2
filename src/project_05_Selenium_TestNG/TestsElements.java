@@ -25,10 +25,12 @@ public class TestsElements {
     @FindBy(xpath="//a[text()='Logout']")
     public WebElement logoutLink;
 
+
     @FindBy(xpath="//ul[@class='nav nav-pills nav-sidebar flex-column nav-legacy']/li")
     public List <WebElement>navMenu;
 
-    @FindBy(xpath="//ul[@class='nav nav-treeview']")
+//    @FindBy(xpath="//ul[@class='nav nav-treeview']")
+    @FindBy(xpath="//li[@class='nav-item has-treeview menu-is-opening menu-open']//li")
     public List <WebElement>navAltMenu;
 
 

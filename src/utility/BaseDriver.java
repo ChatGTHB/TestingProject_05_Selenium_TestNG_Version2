@@ -35,14 +35,14 @@ public class BaseDriver {
 
         driver.manage().window().maximize();
 
-        Duration duration = Duration.ofSeconds(30);
+        Duration duration = Duration.ofSeconds(60);
         driver.manage().timeouts().pageLoadTimeout(duration);
 
         driver.manage().timeouts().implicitlyWait(duration);
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
-      //  loginTest();
+        loginTest();
 
     }
 
