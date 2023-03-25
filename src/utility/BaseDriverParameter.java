@@ -57,28 +57,28 @@ public class BaseDriverParameter {
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
         loginTest();
-
     }
 
     void loginTest() {
+
         driver.get("https://admin-demo.nopcommerce.com/login?");
 
         TestsElements te = new TestsElements(driver);
 
         te.eMail.clear();
         te.eMail.sendKeys("admin@yourstore.com");
+
         te.password.clear();
         te.password.sendKeys("admin");
-        te.loginButton.click();
-        Assert.assertTrue(te.logoutLink.isDisplayed());
 
+        te.loginButton.click();
+
+        Assert.assertTrue(te.logoutLink.isDisplayed());
     }
 
     @AfterClass
     public void endingOperations() {
-
         Tools.wait(5);
         driver.quit();
-
     }
 }

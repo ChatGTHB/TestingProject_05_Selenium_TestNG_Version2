@@ -1,8 +1,6 @@
 package utility;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -44,7 +42,6 @@ public class BaseDriver {
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
         loginTest();
-
     }
 
     void loginTest() {
@@ -55,17 +52,18 @@ public class BaseDriver {
 
         te.eMail.clear();
         te.eMail.sendKeys("admin@yourstore.com");
+
         te.password.clear();
         te.password.sendKeys("admin");
+
         te.loginButton.click();
+
         Assert.assertTrue(te.logoutLink.isDisplayed());
     }
 
     @AfterClass
     public void endingOperations() {
-
         Tools.wait(5);
         driver.quit();
-
     }
 }
