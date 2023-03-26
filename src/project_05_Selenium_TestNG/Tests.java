@@ -135,7 +135,9 @@ public class Tests extends BaseDriverParameter {
         js.executeScript("arguments[0].scrollIntoView(true);", te.customerEditButton);
         js.executeScript("arguments[0].click();", te.customerEditButton);
 
-        te.deleteButton.click();
+        wait.until(ExpectedConditions.elementToBeClickable(te.deleteButton));
+        js.executeScript("arguments[0].scrollIntoView(true);", te.deleteButton);
+        js.executeScript("arguments[0].click();", te.deleteButton);
         js.executeScript("arguments[0].click();", te.deleteConfirm);
 
         Assert.assertTrue(te.successMessage.getText().contains("success"));
