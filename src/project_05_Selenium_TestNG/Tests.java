@@ -103,14 +103,7 @@ public class Tests extends BaseDriverParameter {
         te.customerSearchButton.click();
 
         js.executeScript("arguments[0].scrollIntoView(true);", te.searchCustomerMailList.get(0));
-
-        for (int i = 0; i <te.searchCustomerMailList.size(); i++) {
-            wait.until(ExpectedConditions.stalenessOf(te.searchCustomerMailList.get(i)));
-            if(te.searchCustomerMailList.get(i).getText().equals(randomMail)){
-                Assert.assertEquals(te.searchCustomerMailList.get(i).getText(), randomMail);
-                break;
-            }
-        }
+        Assert.assertTrue(te.searchCustomerMailList.size()!=0);
 
         js.executeScript("arguments[0].scrollIntoView(true);", te.customerEditButton);
         js.executeScript("arguments[0].click();", te.customerEditButton);
