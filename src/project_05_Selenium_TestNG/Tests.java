@@ -40,7 +40,7 @@ public class Tests extends BaseDriverParameter {
 
         TestsElements te = new TestsElements(driver);
         Actions actions = new Actions(driver);
-        randomMail = "eMail" + (int) (Math.random() * 10000) + "@email.com";
+        randomMail = "testing" + (int) (Math.random() * 10000) + "@email.com";
 
         wait.until(ExpectedConditions.visibilityOfAllElements(te.navMenu));
         te.navMenu.get(3).click();
@@ -109,7 +109,7 @@ public class Tests extends BaseDriverParameter {
         js.executeScript("arguments[0].click();", te.customerEditButton);
 
         actions.click(te.customerCreateInputs.get(0))
-                .sendKeys("edit").build().perform();
+                .sendKeys(".tr").build().perform();
 
         te.saveButton.click();
 
@@ -124,7 +124,7 @@ public class Tests extends BaseDriverParameter {
         JavascriptExecutor js = (JavascriptExecutor) driver;
 
         actions.click(te.customersSearchEmail)
-                .sendKeys(randomMail + "edit")
+                .sendKeys(randomMail + ".tr")
                 .sendKeys(Keys.TAB)
                 .sendKeys("First name")
                 .sendKeys(Keys.TAB)
