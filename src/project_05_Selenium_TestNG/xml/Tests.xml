@@ -1,14 +1,14 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite" parallel="tests" thread-count="2">
-    <test name="Test1">
-        <parameter name="browserType" value="chrome"></parameter>
+    <test name="chromeTest">
+        <parameter name="browserType" value="chrome"/>
         <classes>
             <class name="project_05_Selenium_TestNG.Tests">
             </class>
         </classes>
     </test>
-    <test name="Test2">
-        <parameter name="browserType" value="edge"></parameter>
+    <test name="edgeTest">
+        <parameter name="browserType" value="edge"/>
         <classes>
             <class name="project_05_Selenium_TestNG.Tests">
             </class>

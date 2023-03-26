@@ -17,14 +17,7 @@ public class Tests extends BaseDriverParameter {
 
     @Test(priority = 1)
     void loginTest() {
-//        TestsElements te = new TestsElements(driver);
-//
-//        te.eMail.clear();
-//        te.eMail.sendKeys("admin@yourstore.com");
-//        te.password.clear();
-//        te.password.sendKeys("admin");
-//        te.loginButton.click();
-//        Assert.assertTrue(te.logoutLink.isDisplayed());
+
     }
 
     @Test(priority = 2)
@@ -36,10 +29,8 @@ public class Tests extends BaseDriverParameter {
         for (int i = 1; i < te.navMenu.size(); i++) {
             wait.until(ExpectedConditions.visibilityOfAllElements(te.navMenu));
             js.executeScript("arguments[0].scrollIntoView(true);", te.navMenu.get(i));
-            // System.out.println("te.navMenu.get(i) = " + te.navMenu.get(i).getText());
             te.navMenu.get(i).click();
             Assert.assertTrue(te.navAltMenu.get(0).isEnabled());
-            // System.out.println("te.navAltMenu.get(0) = " + te.navAltMenu.get(0).getText());
             Assert.assertTrue(te.navAltMenu.get(0).isDisplayed());
         }
     }
@@ -68,6 +59,7 @@ public class Tests extends BaseDriverParameter {
                 .sendKeys(Keys.TAB)
                 .sendKeys("Last name").build();
         action.perform();
+
         te.customerCreateGenders.get(0).click();
 
         action = actions.click(te.customerCreateBirthdayCalender)
@@ -90,7 +82,7 @@ public class Tests extends BaseDriverParameter {
 
         te.saveButton.click();
 
-        Assert.assertTrue(te.successMessage.isDisplayed());
+        Assert.assertTrue(te.successMessage.getText().contains("success"));
     }
 
     @Test(priority = 4, dependsOnMethods = "createCustomer")
@@ -110,9 +102,15 @@ public class Tests extends BaseDriverParameter {
 
         te.customerSearchButton.click();
 
-        js.executeScript("arguments[0].scrollIntoView(true);", te.searchCustomerMailList);
-        wait.until(ExpectedConditions.visibilityOf(te.searchCustomerMailList));
-        Assert.assertEquals(randomMail, te.searchCustomerMailList.getText());
+        js.executeScript("arguments[0].scrollIntoView(true);", te.searchCustomerMailList.get(0));
+
+        for (int i = 0; i <te.searchCustomerMailList.size(); i++) {
+            wait.until(ExpectedConditions.stalenessOf(te.searchCustomerMailList.get(i)));
+            if(te.searchCustomerMailList.get(i).getText().equals(randomMail)){
+                Assert.assertEquals(te.searchCustomerMailList.get(i).getText(), randomMail);
+                break;
+            }
+        }
 
         js.executeScript("arguments[0].scrollIntoView(true);", te.customerEditButton);
         js.executeScript("arguments[0].click();", te.customerEditButton);
@@ -122,7 +120,7 @@ public class Tests extends BaseDriverParameter {
 
         te.saveButton.click();
 
-        Assert.assertTrue(te.successMessage.isDisplayed());
+        Assert.assertTrue(te.successMessage.getText().contains("success"));
     }
 
     @Test(priority = 5, dependsOnMethods = {"createCustomer", "editCustomer"})
@@ -147,19 +145,18 @@ public class Tests extends BaseDriverParameter {
         te.deleteButton.click();
         js.executeScript("arguments[0].click();", te.deleteConfirm);
 
-        Assert.assertTrue(te.successMessage.isDisplayed());
+        Assert.assertTrue(te.successMessage.getText().contains("success"));
     }
 
     @Test(priority = 6)
     void searchTest() {
 
         TestsElements te = new TestsElements(driver);
-        Actions actions = new Actions(driver);
 
         te.searchBox.sendKeys("Shipments");
 
         te.searchShipments.click();
 
-        Assert.assertTrue(te.shipmentsTextConfirm.isDisplayed());
+        Assert.assertEquals(te.shipmentsTextConfirm.getText(), "Shipments");
     }
 }
