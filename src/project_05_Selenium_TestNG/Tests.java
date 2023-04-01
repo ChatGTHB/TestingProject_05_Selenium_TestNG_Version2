@@ -154,7 +154,6 @@ public class Tests extends BaseDriverParameter {
         js.executeScript("arguments[0].scrollIntoView(false);", wait.until(ExpectedConditions.elementToBeClickable(te.customerEditButton)));
         te.customerEditButton.click();
 
-
         js.executeScript("arguments[0].scrollIntoView(false);", wait.until(ExpectedConditions.elementToBeClickable(te.deleteButton)));
         js.executeScript("arguments[0].click();", te.deleteButton);
 
