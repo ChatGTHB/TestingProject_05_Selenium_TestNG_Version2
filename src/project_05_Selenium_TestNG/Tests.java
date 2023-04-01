@@ -96,7 +96,6 @@ public class Tests extends BaseDriverParameter {
         JavascriptExecutor js = (JavascriptExecutor) driver;
 
         wait.until(ExpectedConditions.visibilityOfAllElements(te.navMenu));
-        te.navMenu.get(3).click();
 
         actions.click(te.customersSearchEmail)
                 .sendKeys(randomMail)
