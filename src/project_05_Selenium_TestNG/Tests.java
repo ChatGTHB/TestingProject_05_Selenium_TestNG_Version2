@@ -1,10 +1,12 @@
 package project_05_Selenium_TestNG;
 
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -40,17 +42,23 @@ public class Tests extends BaseDriverParameter {
 
         TestsElements te = new TestsElements(driver);
         Actions actions = new Actions(driver);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
         randomMail = "testing" + (int) (Math.random() * 10000) + "@email.com";
 
         wait.until(ExpectedConditions.visibilityOfAllElements(te.navMenu));
         te.navMenu.get(3).click();
 
         wait.until(ExpectedConditions.visibilityOfAllElements(te.navAltMenu));
+        js.executeScript("arguments[0].scrollIntoView(false);", te.navAltMenu.get(0));
         te.navAltMenu.get(0).click();
 
-        te.addButton.click();
+        wait.until(ExpectedConditions.elementToBeClickable(te.addButton));
+        js.executeScript("arguments[0].scrollIntoView(false);", te.addButton);
+        js.executeScript("arguments[0].click();", te.addButton);
 
-        Action action = actions.click(te.customerCreateInputs.get(0))
+
+
+        Action action = actions.click(wait.until(ExpectedConditions.elementToBeClickable(te.customerCreateInputs.get(0))))
                 .sendKeys(randomMail)
                 .sendKeys(Keys.TAB)
                 .sendKeys("password")
@@ -108,7 +116,7 @@ public class Tests extends BaseDriverParameter {
                 .sendKeys("Last name")
                 .build().perform();
 
-        te.customerSearchButton.click();
+        wait.until(ExpectedConditions.elementToBeClickable(te.customerSearchButton)).click();
 
         js.executeScript("arguments[0].scrollIntoView(true);", te.searchCustomerMailList.get(0));
         Assert.assertTrue(te.searchCustomerMailList.size() != 0);
@@ -119,8 +127,10 @@ public class Tests extends BaseDriverParameter {
         actions.click(te.customerCreateInputs.get(0))
                 .sendKeys(".tr").build().perform();
 
+        wait.until(ExpectedConditions.elementToBeClickable(te.saveButton));
         te.saveButton.click();
 
+        wait.until(ExpectedConditions.visibilityOf(te.successMessage));
         Assert.assertTrue(te.successMessage.getText().contains("success"));
     }
 
@@ -139,12 +149,15 @@ public class Tests extends BaseDriverParameter {
                 .sendKeys("Last name").build().perform();
 
         te.customerSearchButton.click();
+        wait.until(ExpectedConditions.numberOfElementsToBe(By.xpath("(//a[@class='btn btn-default'])[1]"),1));
 
-        js.executeScript("arguments[0].scrollIntoView(false);", te.customerEditButton);
-        js.executeScript("arguments[0].click();", te.customerEditButton);
+        js.executeScript("arguments[0].scrollIntoView(false);", wait.until(ExpectedConditions.elementToBeClickable(te.customerEditButton)));
+        te.customerEditButton.click();
 
-//
+
+        js.executeScript("arguments[0].scrollIntoView(false);", wait.until(ExpectedConditions.elementToBeClickable(te.deleteButton)));
         js.executeScript("arguments[0].click();", te.deleteButton);
+
         js.executeScript("arguments[0].scrollIntoView(false);", te.deleteConfirm);
         js.executeScript("arguments[0].click();", te.deleteConfirm);
 

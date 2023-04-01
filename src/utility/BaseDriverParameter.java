@@ -48,7 +48,7 @@ public class BaseDriverParameter {
 
         driver.manage().timeouts().implicitlyWait(duration);
 
-        wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         loginTest();
     }

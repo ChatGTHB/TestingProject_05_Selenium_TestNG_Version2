@@ -61,13 +61,10 @@ public class TestsElements {
     @FindBy(id = "SearchEmail")
     public WebElement customersSearchEmail;
 
-    @FindBy(xpath = "//td[text()='email12345@email.com']")
-    public WebElement confirmCreateCustomer;
-
     @FindBy(xpath = "(//table)[2]/tbody/tr/td[2]")
     public List<WebElement> searchCustomerMailList;
 
-    @FindBy(xpath = "//a[@class='btn btn-default']")
+    @FindBy(xpath = "(//a[@class='btn btn-default'])[1]")
     public WebElement customerEditButton;
 
     @FindBy(id = "customer-delete")
