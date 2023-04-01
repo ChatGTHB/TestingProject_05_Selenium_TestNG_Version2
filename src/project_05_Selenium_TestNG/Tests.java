@@ -68,8 +68,11 @@ public class Tests extends BaseDriverParameter {
                 .sendKeys("Company name").build();
         action.perform();
 
+        wait.until(ExpectedConditions.elementToBeClickable(te.customerCreateTaxInput));
         te.customerCreateTaxInput.click();
+        wait.until(ExpectedConditions.elementToBeClickable(te.customerCreateInputs.get(8)));
         te.customerCreateInputs.get(8).click();
+        wait.until(ExpectedConditions.elementToBeClickable(te.customerCreateNewsletters.get(0)));
         te.customerCreateNewsletters.get(0).click();
 
         action = actions.click(te.customerCreateInputs.get(10))
@@ -91,6 +94,9 @@ public class Tests extends BaseDriverParameter {
         TestsElements te = new TestsElements(driver);
         Actions actions = new Actions(driver);
         JavascriptExecutor js = (JavascriptExecutor) driver;
+
+        wait.until(ExpectedConditions.visibilityOfAllElements(te.navMenu));
+        te.navMenu.get(3).click();
 
         actions.click(te.customersSearchEmail)
                 .sendKeys(randomMail)
