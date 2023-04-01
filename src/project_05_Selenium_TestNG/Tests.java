@@ -97,6 +97,9 @@ public class Tests extends BaseDriverParameter {
 
         wait.until(ExpectedConditions.visibilityOfAllElements(te.navMenu));
 
+        wait.until(ExpectedConditions.elementToBeClickable(te.customersSearchEmail));
+        js.executeScript("arguments[0].scrollIntoView(false);", te.customersSearchEmail);
+
         actions.click(te.customersSearchEmail)
                 .sendKeys(randomMail)
                 .sendKeys(Keys.TAB)
@@ -108,7 +111,7 @@ public class Tests extends BaseDriverParameter {
         te.customerSearchButton.click();
 
         js.executeScript("arguments[0].scrollIntoView(true);", te.searchCustomerMailList.get(0));
-        Assert.assertTrue(te.searchCustomerMailList.size()!=0);
+        Assert.assertTrue(te.searchCustomerMailList.size() != 0);
 
         js.executeScript("arguments[0].scrollIntoView(true);", te.customerEditButton);
         js.executeScript("arguments[0].click();", te.customerEditButton);
@@ -137,12 +140,12 @@ public class Tests extends BaseDriverParameter {
 
         te.customerSearchButton.click();
 
-        js.executeScript("arguments[0].scrollIntoView(true);", te.customerEditButton);
+        js.executeScript("arguments[0].scrollIntoView(false);", te.customerEditButton);
         js.executeScript("arguments[0].click();", te.customerEditButton);
 
-        wait.until(ExpectedConditions.elementToBeClickable(te.deleteButton));
-        js.executeScript("arguments[0].scrollIntoView(true);", te.deleteButton);
+//
         js.executeScript("arguments[0].click();", te.deleteButton);
+        js.executeScript("arguments[0].scrollIntoView(false);", te.deleteConfirm);
         js.executeScript("arguments[0].click();", te.deleteConfirm);
 
         Assert.assertTrue(te.successMessage.getText().contains("success"));
