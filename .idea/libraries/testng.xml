@@ -1,10 +1,11 @@
 <component name="libraryTable">
   <library name="testng" type="repository">
-    <properties maven-id="org.testng:testng:6.14.3" />
+    <properties maven-id="org.testng:testng:7.7.0" />
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/org/testng/testng/6.14.3/testng-6.14.3.jar!/" />
-      <root url="jar://$MAVEN_REPOSITORY$/com/beust/jcommander/1.72/jcommander-1.72.jar!/" />
-      <root url="jar://$MAVEN_REPOSITORY$/org/apache-extras/beanshell/bsh/2.0b6/bsh-2.0b6.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/testng/testng/7.7.0/testng-7.7.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/beust/jcommander/1.82/jcommander-1.82.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/jquery/3.6.1/jquery-3.6.1.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
